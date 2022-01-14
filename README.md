@@ -1,18 +1,5 @@
-# @paralenz/%name%
-<!-- Add description here -->
+This is a template to unify how to create a new package by the paralenz development team.
 
-## Prerequisites
-You will need to have a `.npmrc` file in your project that tells npm to use the github package registry
-```sh
-echo "@paralenz:registry=https://npm.pkg.github.com/" > .npmrc
-```
+Create a new repo and select to use this template.
 
-## Installation
-Yarn:
-```sh
-yarn add @paralenz/%name%
-```
-npm:
-```sh
-npm install @paralenz/%name%
-```
+When you have cloned the new repo run the `setup.js` file
