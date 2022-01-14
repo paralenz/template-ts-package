@@ -1,8 +1,9 @@
 name: Init
 on:
-  create:
+  push:
 jobs:
   init:
+    if: ${{ github.repository != 'paralenz/template-ts-package' }}
     name: Init
     runs-on: ubuntu-latest
     steps:
