@@ -1,0 +1,10 @@
+REPO_NAME=$(basename -s .git `git config --get remote.origin.url`)
+
+sed -e "s|%name%|${REPO_NAME}|i" package.json > package.json
+sed -e "s|%name%|${REPO_NAME}|i" readme.tmpl > README.md
+
+mv .github/workflows/pull-request.tmpl .github/workflows/pull-request.yml
+mv .github/workflows/publish.tmpl .github/workflows/publish.yml
+mv .github/dependabot.tmpl .github/dependabot.yml
+
+yarn add -D jest ts-node typescript @types/jest @paralenz/eslint-config-typescript-react
