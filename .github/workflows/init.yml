@@ -12,11 +12,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Replace name in package.json
         run: |
-          sed -e 's/%name%/${{github.repository}}/i' package.json >> package.json
+          sed -e 's/%name%/${GITHUB_REPOSITORY}/i' package.json >> package.json
           cat package.json
       - name: Replace name in README.md
         run: |
-          sed -e 's/%name%/${{github.repository}}/i' readme.tmpl >> README.md
+          sed -e 's/%name%/${GITHUB_REPOSITORY}/i' readme.tmpl >> README.md
           cat README.md
       - name: Rename workflow files
         run: |
