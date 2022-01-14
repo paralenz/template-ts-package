@@ -1,0 +1,10 @@
+name: Init
+on:
+  create
+jobs:
+  init:
+    name: Init
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo "hello world"
