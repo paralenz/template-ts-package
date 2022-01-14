@@ -10,17 +10,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Replace name
+      - name: Replace name in package.json
         run: |
-          sed -e 's/%name%/the-name/i' package.json >> package.json
-          sed -e 's/%name%/the-name/i' readme.tmpl >> README.md
+          sed -e 's/%name%/${{github.repository}}/i' package.json >> package.json
+          cat package.json
+      - name: Replace name in README.md
+          sed -e 's/%name%/${{github.repository}}/i' readme.tmpl >> README.md
+          cat README.md
       - name: Rename workflow files
         run: |
-          mv ./github/workflows/_pull-request.tmpl ./github/workflows/pull-request.yml
-          mv ./github/workflows/_publish.tmpl ./github/workflows/publish.yml
-          mv ./github/dependabot.tmpl ./github/dependabot.yml
+          mv ${GITHUB_WORKSPACE}/.github/workflows/_pull-request.tmpl ${GITHUB_WORKSPACE}/.github/workflows/pull-request.yml
+          mv ${GITHUB_WORKSPACE}/.github/workflows/_publish.tmpl ${GITHUB_WORKSPACE}/.github/workflows/publish.yml
+          mv ${GITHUB_WORKSPACE}/.github/dependabot.tmpl ${GITHUB_WORKSPACE}/.github/dependabot.yml
       - name: Delete init workflow
-        run: rm ./github/workflows/init.yml
+        run: rm ${GITHUB_WORKSPACE}/.github/workflows/init.yml
       - uses: paralenz/actions/setup-node@v1.1.3
       - name: Install devDependencies
         run: yarn add -D jest ts-node typescript @types/jest @paralenz/eslint-config-typescript-react
