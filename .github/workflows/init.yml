@@ -1,6 +1,6 @@
 name: Init
 on:
-  create
+  create:
 jobs:
   init:
     name: Init
