@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: paralenz/actions/setup-node@v1.1.3
       - name: Replace name
         run: |
           sed -e 's/%name%/the-name/i' package.json >> package.json
@@ -20,10 +19,11 @@ jobs:
           mv ./github/workflows/_pull-request.tmpl ./github/workflows/pull-request.yml
           mv ./github/workflows/_publish.tmpl ./github/workflows/publish.yml
           mv ./github/dependabot.tmpl ./github/dependabot.yml
-      - name: Install devDependencies
-        run: yarn add -D jest ts-node typescript @types/jest @paralenz/eslint-config-typescript-react
       - name: Delete init workflow
         run: rm ./github/workflows/init.yml
+      - uses: paralenz/actions/setup-node@v1.1.3
+      - name: Install devDependencies
+        run: yarn add -D jest ts-node typescript @types/jest @paralenz/eslint-config-typescript-react
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
         with:
