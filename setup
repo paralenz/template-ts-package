@@ -6,7 +6,7 @@ sed -e "s|%name%|${REPO_NAME}|i" templates/readme.tmpl | tee README.md
 echo "✅ README created"
 
 mv templates/pull-request.tmpl .github/workflows/pull-request.yml
-mv templates/workflows/publish.tmpl .github/workflows/publish.yml
+mv templates/publish.tmpl .github/workflows/publish.yml
 mv templates/dependabot.tmpl .github/dependabot.yml
 echo "✅ workflows created"
 
