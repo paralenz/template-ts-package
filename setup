@@ -15,5 +15,7 @@ echo "✅ packages installed"
 
 rm -rf templates
 echo "✅ /templates deleted"
+find . -name '.gitkeep' -delete 
+echo "✅ .gitkeep files deleted"
 rm setup
 echo "✅ setup deleted"
