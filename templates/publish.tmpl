@@ -12,7 +12,11 @@ jobs:
       - uses: paralenz/actions/setup-node@master
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
-      - run: yarn lint
-      - run: yarn test --passWithNoTests
-      - run: yarn build
+      - name: Run linting
+        run: yarn lint
+      - name: Run tests
+        run: yarn test --passWithNoTests
+      - name: Run build
+        run: yarn build
+      - name: Publish
       - run: yarn publish
