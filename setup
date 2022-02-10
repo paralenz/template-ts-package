@@ -1,21 +1,28 @@
 REPO_NAME=$(basename -s .git `git config --get remote.origin.url`)
+NPM_USER=$(npm whoami --registry https://npm.pkg.github.com --scope=@paralenz`)
 
 sed -e "s|%name%|${REPO_NAME}|i" templates/package.templ | tee package.json
 echo "✅ package.json created"
+
 sed -e "s|%name%|${REPO_NAME}|i" templates/readme.tmpl | tee README.md
 echo "✅ README created"
 
 mv templates/pull-request.tmpl .github/workflows/pull-request.yml
 mv templates/publish.tmpl .github/workflows/publish.yml
-mv templates/dependabot.tmpl .github/dependabot.yml
-echo "✅ workflows created"
+echo "✅ Workflows created"
+
+sed -e "s|%github_user%|${NPM_USER}|i" templates/dependabot.tmpl | tee .github/dependabot.yml
+echo "✅ Dependabot file created"
+
+rm -rf templates
+echo "✅ /templates deleted"
+
+find . -name '.gitkeep' -delete 
+echo "✅ .gitkeep files deleted"
+
 
 yarn add -D jest ts-jest ts-node typescript @types/jest @paralenz/eslint-config-typescript-react
 echo "✅ packages installed"
 
-rm -rf templates
-echo "✅ /templates deleted"
-find . -name '.gitkeep' -delete 
-echo "✅ .gitkeep files deleted"
 rm setup
 echo "✅ setup deleted"
