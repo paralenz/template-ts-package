@@ -11,10 +11,12 @@ jobs:
       - uses: actions/checkout@v2
       - uses: paralenz/actions/setup-node@master
         with:
-          node-version: '14'
           token: ${{ secrets.NPM_AUTH_TOKEN }}
-          registry-url: https://npm.pkg.github.com/
-      - run: yarn lint
-      - run: yarn test
-      - run: yarn build
+      - name: Run linting
+        run: yarn lint
+      - name: Run tests
+        run: yarn test --passWithNoTests
+      - name: Run build
+        run: yarn build
+      - name: Publish
       - run: yarn publish
