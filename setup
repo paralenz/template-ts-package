@@ -1,5 +1,5 @@
-REPO_NAME=$(basename -s .git `git config --get remote.origin.url`)
-NPM_USER=$(npm whoami --registry https://npm.pkg.github.com --scope=@paralenz`)
+REPO_NAME=$(basename -s .git $(git config --get remote.origin.url))
+NPM_USER=$(npm whoami --registry https://npm.pkg.github.com --scope=@paralenz)
 
 sed -e "s|%name%|${REPO_NAME}|i" templates/package.templ | tee package.json
 echo "✅ package.json created"
