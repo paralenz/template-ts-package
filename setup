@@ -21,7 +21,7 @@ find . -name '.gitkeep' -delete
 echo "✅ .gitkeep files deleted"
 
 
-yarn add -D jest ts-jest ts-node typescript @types/jest @paralenz/eslint-config-typescript-react
+yarn add -D jest ts-jest ts-node typescript @types/jest @paralenz/eslint-config-typescript-react @types/node
 echo "✅ packages installed"
 
 rm setup
