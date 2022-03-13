@@ -8,7 +8,7 @@ sed -e "s|%name%|${REPO_NAME}|i" templates/readme.tmpl | tee README.md
 echo "✅ README created"
 
 mv templates/pull-request.tmpl .github/workflows/pull-request.yml
-mv templates/publish.tmpl .github/workflows/publish.yml
+mv templates/push-to-master.tmpl .github/workflows/push-to-master.yml
 echo "✅ Workflows created"
 
 sed -e "s|%github_user%|${NPM_USER}|i" templates/dependabot.tmpl | tee .github/dependabot.yml

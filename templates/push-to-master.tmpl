@@ -1,11 +1,10 @@
-name: Publish
+name: Push to master
 on:
   push:
     branches:
       - master
 jobs:
-  publish:
-    name: Publish
+  main:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -18,5 +17,7 @@ jobs:
         run: yarn test --passWithNoTests
       - name: Run build
         run: yarn build
+      - name: Tag and Release
+        uses: paralenz/actions/make-release@v1.2.3
       - name: Publish
         run: yarn publish
