@@ -17,7 +17,7 @@ jobs:
         run: yarn test --passWithNoTests
       - name: Run build
         run: yarn build
-      - name: Tag and Release
-        uses: paralenz/actions/make-release@master
       - name: Publish
         run: yarn publish
+      - name: Tag and Release
+        uses: paralenz/actions/make-release@master
